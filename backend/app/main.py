@@ -3,7 +3,7 @@ import json
 import re
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.services.openrouter_service import get_llm_response
 from app.models.chat_models import ChatRequest
 from app.prompts.system_prompts import SYSTEM_PROMPT
 from app.services.ecommerce_service import check_order_status, process_return_request, request_human_agent

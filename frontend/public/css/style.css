@@ -42,6 +42,8 @@ body {
     border-radius: 18px;
     max-width: 75%;
     line-height: 1.4;
+    display: flex; /* Add this */
+    flex-direction: column; /* Add this */
 }
 
 .user-message {
@@ -56,6 +58,7 @@ body {
     color: #333;
     align-self: flex-start;
     border-bottom-left-radius: 4px;
+    position: relative; /* <-- Add this to position the button inside */
 }
 
 #input-form {
@@ -86,4 +89,153 @@ body {
 
 #send-button:hover {
     background-color: #4C33A3;
+}
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: #EAEAEA;
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background-color: #999;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-of-type(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-of-type(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1.0);
+    }
+}
+.message-text {
+    word-wrap: break-word; /* Ensure long words don't overflow */
+}
+
+.timestamp {
+    font-size: 0.75rem; /* 12px */
+    color: #ffffff99; /* Lighter color for timestamp on dark bubbles */
+    align-self: flex-end;
+    margin-top: 5px;
+}
+
+.bot-message .timestamp {
+    color: #66666699; /* Lighter color for timestamp on light bubbles */
+}
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ffffff99;
+    border: 1px solid #00000022;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s ease-in-out;
+}
+
+.bot-message:hover .copy-btn {
+    opacity: 1; /* Show on hover */
+}
+
+.copy-btn:hover {
+    background: #ffffff;
+}
+
+.copy-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: #333;
+}
+#mic-btn {
+    background: none;
+    border: none;
+    padding: 0 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mic-btn svg {
+    stroke: #888;
+    transition: stroke 0.2s;
+}
+
+#mic-btn:hover svg {
+    stroke: #333;
+}
+
+#mic-btn.recording svg {
+    stroke: #D33F3F;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#voice-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    height: 57px; /* Match height of text input area */
+}
+
+#voice-mic-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+#voice-mic-btn svg {
+    stroke: #555;
+}
+
+#voice-mic-btn.recording {
+    background-color: #ffdddd;
+    animation: pulse 1.5s infinite;
+}
+
+/* This class will be added/removed by JavaScript to switch modes */
+.voice-mode-active #text-input-container {
+    display: none;
+}
+
+.voice-mode-active #voice-input-container {
+    display: flex;
 }
