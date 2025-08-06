@@ -27,3 +27,32 @@ def check_order_status(order_number: str) -> dict:
             "status": "error",
             "message": f"Sorry, I couldn't find any order with the number {order_number}."
         }
+def process_return_request(order_number: str, reason: str) -> dict:
+    """Simulates processing a return request."""
+    print(f"TOOL USED: Processing return for order #{order_number} due to: {reason}")
+    if order_number in ["101", "102", "103"]:
+        return {
+            "status": "success",
+            "message": f"I've started the return process for order #{order_number}. You will receive an email with instructions shortly."
+        }
+    else:
+        return {
+            "status": "error",
+            "message": "I couldn't find that order number to process a return."
+        }
+def request_human_agent(issue: str) -> dict:
+    """
+    Simulates escalating the conversation to a human agent by creating a support ticket.
+    """
+    ticket_id = f"TICKET-{random.randint(1000, 9999)}"
+    print("="*30)
+    print("!! HUMAN ESCALATION TRIGGERED !!")
+    print(f"  Ticket ID: {ticket_id}")
+    print(f"  User Issue: {issue}")
+    print("="*30)
+    
+    return {
+        "status": "success",
+        "ticket_id": ticket_id,
+        "message": f"A support ticket ({ticket_id}) has been created. An agent will review the issue and contact the user shortly."
+    }

@@ -7,7 +7,7 @@ load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 # Recommended model, but you can use others like "openai/gpt-4o"
-MODEL_NAME = "anthropic/claude-3.5-sonnet" 
+MODEL_NAME = "meta-llama/llama-3.3-70b-instruct" 
 
 async def get_llm_response(prompt_messages: list) -> str:
     """

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L1 Automation</title>
+    <link rel="stylesheet" href="/css/style.css"> </head>
+<body>
+    <div id="chat-container">
+        <div id="chat-header">
+            Orion - Support Assistant
+        </div>
+        <div id="message-container">
+            <div class="message bot-message" data-initial-message="<%= initialBotMessage %>">
+                <%= initialBotMessage %>
+            </div>
+        </div>
+        <form id="input-form">
+            <input type="text" id="message-input" placeholder="Ask something..." autocomplete="off" required>
+            <button id="send-button" type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="/js/main.js"></script> </body>
+</html>
